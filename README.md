@@ -5,4 +5,4 @@ When the code will be released? In this repository I keep track of the most inte
 
 ## Repository list 
 
-- [SynthLight: Portrait Relighting with Diffusion Model by Learning to Re-render Synthetic Faces]([https://github.com/tuo-utente/repository-uno](https://vrroom.github.io/synthlight/))
+- [SynthLight: Portrait Relighting with Diffusion Model by Learning to Re-render Synthetic Faces](https://vrroom.github.io/synthlight/)
