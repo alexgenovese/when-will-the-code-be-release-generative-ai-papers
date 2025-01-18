@@ -1,5 +1,6 @@
 # When will the code be released?  
 - [SynthLight: Portrait Relighting with Diffusion Model by Learning to Re-render Synthetic Faces](https://vrroom.github.io/synthlight/)
+- [FramePainter: Endowing Interactive Image Editing with Video Diffusion Priors](https://github.com/YBYBZhang/FramePainter)
 
 
 ## This repository keep track when the code will be release 
