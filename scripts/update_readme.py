@@ -2,6 +2,7 @@ import os
 import re
 from datetime import datetime, timezone, timedelta
 from github import Github
+import sys
 
 # Configurazione
 README_PATH = 'README.md'
@@ -16,23 +17,40 @@ def get_current_time():
 
 def main():
     token = os.getenv('GITHUB_TOKEN')
-    g = Github(token)
+    if not token:
+        print("GITHUB_TOKEN not found in environment variables.", file=sys.stderr)
+        sys.exit(1)
+    
+    try:
+        g = Github(token)
+    except Exception as e:
+        print(f"Error authenticating with GitHub: {e}", file=sys.stderr)
+        sys.exit(1)
 
-    with open(README_PATH, 'r', encoding='utf-8') as f:
-        readme = f.read()
+    try:
+        with open(README_PATH, 'r', encoding='utf-8') as f:
+            readme = f.read()
+    except FileNotFoundError:
+        print(f"{README_PATH} not found.", file=sys.stderr)
+        sys.exit(1)
 
     matches = re.findall(REPO_LIST_REGEX, readme)
     updated_readme = readme
 
     for name, url in matches:
-        repo = g.get_repo(url.replace('https://github.com/', ''))
+        try:
+            repo = g.get_repo(url.replace('https://github.com/', ''))
+        except Exception as e:
+            print(f"Error accessing repository {url}: {e}", file=sys.stderr)
+            continue
+
         commits = repo.get_commits(since=datetime.utcnow() - timedelta(days=1))
         file_changes = 0
         last_update = None
 
         for commit in commits:
             stats = commit.stats
-            file_changes += stats.additions + stats.deletions  # Approssimazione
+            file_changes += len(commit.files)  # Conta il numero di file modificati
             if not last_update:
                 last_update = commit.commit.author.date
 
@@ -56,8 +74,12 @@ def main():
         updated_readme = re.sub(pattern, replacement, updated_readme, count=1)
 
     # Scrivi il README aggiornato
-    with open(README_PATH, 'w', encoding='utf-8') as f:
-        f.write(updated_readme)
+    try:
+        with open(README_PATH, 'w', encoding='utf-8') as f:
+            f.write(updated_readme)
+    except Exception as e:
+        print(f"Error writing to {README_PATH}: {e}", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

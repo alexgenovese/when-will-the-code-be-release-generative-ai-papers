@@ -5,6 +5,9 @@ on:
     # Esecuzione ogni giorno alle 11:00 UTC, che corrisponde a 12:00 ora italiana (considerando l'ora legale)
     - cron: '0 11 * * *'
 
+permissions:
+  contents: write  # Concede permessi di scrittura sui contenuti del repository
+
 jobs:
   update-readme:
     runs-on: ubuntu-latest
@@ -12,6 +15,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          # Usa il token con permessi di scrittura
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -24,7 +30,7 @@ jobs:
 
       - name: Run update script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           python scripts/update_readme.py
 
@@ -37,5 +43,5 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Update README with latest repository statuses"
-            git push
+            git push origin HEAD:${{ github.ref }}
           fi
