@@ -18,6 +18,7 @@ jobs:
         with:
           # Use the PAT token instead of the default GITHUB_TOKEN
           token: ${{ secrets.PAT_TOKEN }}
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v4
