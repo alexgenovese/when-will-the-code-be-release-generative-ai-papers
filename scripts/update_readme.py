@@ -16,9 +16,9 @@ def get_current_time():
     return local_now.strftime("%d/%m/%Y at %H:%M")
 
 def main():
-    token = os.getenv('GITHUB_TOKEN')
+    token = os.getenv('PAT_TOKEN')
     if not token:
-        print("GITHUB_TOKEN not found in environment variables.", file=sys.stderr)
+        print("PAT_TOKEN not found in environment variables.", file=sys.stderr)
         sys.exit(1)
     
     try:
@@ -36,6 +36,8 @@ def main():
 
     matches = re.findall(REPO_LIST_REGEX, readme)
     updated_readme = readme
+
+    print(f"Founder {len(matches)} occurrencies")
 
     for name, url in matches:
         try:
