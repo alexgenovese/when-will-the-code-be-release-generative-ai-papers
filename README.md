@@ -2,6 +2,7 @@
 - [SynthLight: Portrait Relighting with Diffusion Model by Learning to Re-render Synthetic Faces](https://vrroom.github.io/synthlight/)
 - [FramePainter: Endowing Interactive Image Editing with Video Diffusion Priors](https://github.com/YBYBZhang/FramePainter)
 - [1-2-1: Renaissance of Single-Network Paradigm for Virtual Try-On](https://github.com/ningshuliang/1-2-1-MNVTON)
+- [Token Verse](https://token-verse.github.io/)
 
 
 --------------- 
