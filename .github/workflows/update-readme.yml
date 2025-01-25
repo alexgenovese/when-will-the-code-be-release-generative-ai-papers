@@ -2,11 +2,11 @@ name: Update README Daily
 
 on:
   schedule:
-    # Esecuzione ogni giorno alle 11:00 UTC, che corrisponde a 12:00 ora italiana (considerando l'ora legale)
+    # Runs every day at 12:00 PM Italy time (11:00 AM UTC during standard time)
     - cron: '0 11 * * *'
 
 permissions:
-  contents: write  # Concede permessi di scrittura sui contenuti del repository
+  contents: write  # Grants write access to repository contents
 
 jobs:
   update-readme:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          # Usa il token con permessi di scrittura
+          # Use the PAT token instead of the default GITHUB_TOKEN
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: Set up Python
@@ -30,7 +30,7 @@ jobs:
 
       - name: Run update script
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # Pass the PAT to the script
         run: |
           python scripts/update_readme.py
 
@@ -44,4 +44,3 @@ jobs:
           else
             git commit -m "Update README with latest repository statuses"
             git push origin HEAD:${{ github.ref }}
-          fi
