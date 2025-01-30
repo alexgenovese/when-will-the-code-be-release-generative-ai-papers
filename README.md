@@ -4,6 +4,7 @@
 - [1-2-1: Renaissance of Single-Network Paradigm for Virtual Try-On](https://github.com/ningshuliang/1-2-1-MNVTON)
 - [Token Verse](https://token-verse.github.io/)
 - [Wonderland: Navigating 3D Scenes from a Single Image](https://snap-research.github.io/wonderland/)
+- [Enhancing Real-World Video Super-Resolution with Diffusion Models](https://github.com/xh9998/DiffVSR-project)
   
 
 --------------- 
