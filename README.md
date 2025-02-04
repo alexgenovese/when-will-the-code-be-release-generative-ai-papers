@@ -5,6 +5,8 @@
 - [Token Verse](https://token-verse.github.io/)
 - [Wonderland: Navigating 3D Scenes from a Single Image](https://snap-research.github.io/wonderland/)
 - [Enhancing Real-World Video Super-Resolution with Diffusion Models](https://github.com/xh9998/DiffVSR-project)
+- [Radiant Foam: Real-Time Differentiable Ray Tracing](https://github.com/theialab/radfoam)
+
   
 
 --------------- 
