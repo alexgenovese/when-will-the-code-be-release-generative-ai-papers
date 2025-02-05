@@ -2,23 +2,16 @@ name: Update README Daily
 
 on:
   schedule:
-    # Runs every day at 12:00 PM Italy time (11:00 AM UTC during standard time)
     - cron: '0 11 * * *'
 
 permissions:
-  contents: write  # Grants write access to repository contents
+  contents: write
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug Secrets
-        run: |
-          echo "PAT_TOKEN is set"
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -33,9 +26,14 @@ jobs:
         run: |
           pip install PyGithub
 
+      - name: Debug Secrets
+        run: echo "PAT_TOKEN is set"
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+
       - name: Run update script
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # Pass the PAT to the script
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           python scripts/update_readme.py
 
