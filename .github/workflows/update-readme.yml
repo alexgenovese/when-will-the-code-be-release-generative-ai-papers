@@ -13,11 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug Secrets
+        run: |
+          echo "PAT_TOKEN is set"
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          # Use the PAT token instead of the default GITHUB_TOKEN
-          token: ${{ secrets.PAT_TOKEN }}
           persist-credentials: false
 
       - name: Set up Python
