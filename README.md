@@ -6,6 +6,7 @@
 - [Wonderland: Navigating 3D Scenes from a Single Image](https://snap-research.github.io/wonderland/)
 - [Enhancing Real-World Video Super-Resolution with Diffusion Models](https://github.com/xh9998/DiffVSR-project)
 - [Radiant Foam: Real-Time Differentiable Ray Tracing](https://github.com/theialab/radfoam)
+- [MatAnyone: Stable Video Matting with Consistent Memory Propagation](https://pq-yang.github.io/projects/MatAnyone/)
 
   
 
