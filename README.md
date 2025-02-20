@@ -8,6 +8,7 @@
 - [Radiant Foam: Real-Time Differentiable Ray Tracing](https://github.com/theialab/radfoam)
 - [MatAnyone: Stable Video Matting with Consistent Memory Propagation](https://pq-yang.github.io/projects/MatAnyone/)
 - [InstantRestore: Single-Step Personalized Face Restoration with Shared-Image Attention](https://github.com/snap-research/InstantRestore)
+- [Phantom: Subject-Consistent Video Generation via Cross-Modal Alignment](https://github.com/Phantom-video/Phantom)
 
   
 
